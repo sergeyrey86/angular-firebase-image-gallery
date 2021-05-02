@@ -1,0 +1,44 @@
+<div class="wrapper">
+  <mat-card class="image-content">
+
+    <img [src]="imgSrc" class="image-container">
+
+    <mat-divider></mat-divider>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+
+
+
+      <mat-form-field appearance="">
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="fileInput.click()"
+          type="button"
+        >Select Image</button>
+        <input
+          type="file"
+          hidden
+          formControlName="imageUrl"
+          (change)="showPreview($event)"
+          #fileInput
+          accept="image/*"
+        >
+        <input type="text" matInput formControlName="imageUrl" hidden>
+        <mat-error
+          *ngIf="form.controls.imageUrl.hasError('required')"
+        >Please select image</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="">
+        <mat-label>Description</mat-label>
+        <input type="text" matInput formControlName="description" placeholder="Description">
+        <mat-error
+          *ngIf="form.controls.description.hasError('required')"
+        >Description is required</mat-error>
+      </mat-form-field>
+
+      <button class="submit-button" mat-stroked-button color="primary" type="submit">Upload Image</button>
+    </form>
+  </mat-card>
+</div>

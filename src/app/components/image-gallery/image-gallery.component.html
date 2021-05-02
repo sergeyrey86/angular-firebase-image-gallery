@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <h2 class="title">Image Gallery</h2>
+  <mat-grid-list cols="3" gutterSize="10px" class="list" *ngIf="imageList?.length">
+
+    <mat-grid-tile *ngFor="let image of imageList">
+      <mat-card class="card">
+        <mat-card-header>
+          <div mat-card-avatar class="header-image"></div>
+          <mat-card-title>{{image.description}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="image.imageUrl" alt="Photo from the firebase">
+        <mat-card-actions>
+          <a target=”_blank” [href]="'http://www.google.com/search?q=' + image.description.split(' ').join('+')" > Google search {{image.description}}</a>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <h4 *ngIf="!imageList?.length" class="no-images">There is no images. Please,   <a routerLink="/upload" >    <span>go to the Upload page</span>  </a>  and upload some image!</h4>
+</div>

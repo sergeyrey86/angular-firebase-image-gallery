@@ -1,6 +1,19 @@
-# NgFirebaseImage
+# Angular Firebase Image Gallery
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.11.
+
+Please provide the firebase API in `src/environments/environment.prod.ts` for production build or in `src/environments/environment.ts` for developing purposes.
+
+```javascript 
+firebaseConfig: {
+    apiKey: 'your API key',
+    authDomain: 'your auth domain',
+    databaseURL: 'your database URL',
+    projectId: 'your project id',
+    storageBucket: 'your storage bucket',
+  },
+```
+
 
 ## Development server
 

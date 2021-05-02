@@ -1,0 +1,25 @@
+.mat-card {
+  margin: 10px;
+}
+.wrapper {
+  background-color: bisque;
+  height: 100%;
+  padding: 10px;
+}
+.form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+.image-content {
+  width: 400px;
+}
+.image-container {
+  width: 400px;
+}
+
+.submit-button {
+  margin-top: 10px;
+}
