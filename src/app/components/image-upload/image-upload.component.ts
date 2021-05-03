@@ -42,15 +42,21 @@ export class ImageUploadComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     if (this.form.valid) {
-      const filePath = `images/${Date.now()}_${this.selectedImage.name}`;
+      const name = `${Date.now()}_${this.selectedImage.name}`;
+
+      const filePath = `${this.imageService.basePath}/${name}`;
+
       const fileRef = this.storage.ref(filePath);
+
+      const uploadTask =  this.storage.upload(filePath, this.selectedImage);
+
       this.sub.add(
-        this.storage.upload(filePath, this.selectedImage).snapshotChanges()
+        uploadTask.snapshotChanges()
           .pipe(
             finalize(() => {
               fileRef.getDownloadURL().subscribe((url) => {
                 this.form.value.imageUrl = url;
-                this.imageService.uploadImageDetails(this.form.value);
+                this.imageService.uploadImageDetails({...this.form.value, name});
                 this.resetImageSources();
                 this.resetForm();
               });

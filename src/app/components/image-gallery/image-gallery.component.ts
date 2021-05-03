@@ -19,11 +19,24 @@ export class ImageGalleryComponent implements OnInit, OnDestroy {
       this.imageService.imageDetailList.snapshotChanges()
         .subscribe((list: (SnapshotAction<ImageInterface>)[]) => {
           this.imageList = list.map(
-            (snapshotAction: SnapshotAction<ImageInterface>) => snapshotAction.payload.val()
+            (snapshotAction: SnapshotAction<ImageInterface>) => ({
+              key: snapshotAction.payload.key,
+              ...snapshotAction.payload.val()
+            })
           );
         })
     );
+  }
 
+  onRemove(image: ImageInterface): void {
+    this.imageService.deleteFileDatabase(image.key).then(
+      () => {
+        this.imageService.deleteFileStorage(image.name);
+      }
+    ).catch(
+      (error) => {
+      console.log(error);
+    });
   }
 
   ngOnDestroy(): void {
