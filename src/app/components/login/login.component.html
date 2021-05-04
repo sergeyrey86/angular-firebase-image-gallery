@@ -1,0 +1,47 @@
+<div class="wrapper">
+
+  <mat-card class="form-card">
+    <h2>Login Page</h2>
+
+    <form class="login-form" [formGroup]="loginForm">
+      <mat-form-field class="email">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error
+          *ngIf="loginForm.controls.email.hasError('required')"
+        >Email is required
+        </mat-error>
+        <mat-error
+          *ngIf="loginForm.controls.email.hasError('email')"
+        >Email is not correct
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="password">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput>
+        <mat-error
+          *ngIf="loginForm.controls.password.hasError('required')"
+        >Password is required
+        </mat-error>
+        <mat-error
+          *ngIf="loginForm.controls.password.errors?.minlength"
+        >Password should be at least 6 characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-tab-group>
+        <mat-tab label="SingUp">
+          <button (click)="singUp()" type="submit" class="submit-btn" mat-raised-button>SingUp</button>
+        </mat-tab>
+        <mat-tab label="Login">
+          <button (click)="logIn()" type="submit" class="submit-btn" mat-raised-button>Login</button>
+        </mat-tab>
+      </mat-tab-group>
+    </form>
+  </mat-card>
+
+</div>
+
+
+

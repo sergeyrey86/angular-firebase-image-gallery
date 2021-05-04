@@ -1,11 +1,12 @@
 <mat-toolbar color="primary">
   <span>My Test App</span>
   <span class="spacer"></span>
-  <a routerLink="/gallery" routerLinkActive="active-link">
+  <a *ngIf="authService.isLoggedIn" routerLink="/gallery" routerLinkActive="active-link">
     <span>Go to gallery</span>
   </a>
-  <a routerLink="/upload" routerLinkActive="active-link">
+  <a *ngIf="authService.isLoggedIn" routerLink="/upload" routerLinkActive="active-link">
     <span>Go to upload page</span>
   </a>
+  <button (click)="logOut()" *ngIf="authService.isLoggedIn" mat-raised-button>LogOut</button>
 </mat-toolbar>
 <router-outlet></router-outlet>

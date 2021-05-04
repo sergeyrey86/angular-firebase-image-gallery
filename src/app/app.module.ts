@@ -13,12 +13,14 @@ import {MaterialModule} from './shared-modules/material.module';
 import {ImageGalleryComponent} from './components/image-gallery/image-gallery.component';
 import {ImageUploadComponent} from './components/image-upload/image-upload.component';
 import {AppRoutingModule} from './app-routing.module';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImageGalleryComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
